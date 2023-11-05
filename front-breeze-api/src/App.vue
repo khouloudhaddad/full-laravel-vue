@@ -5,10 +5,7 @@ import Nav from './components/Nav.vue'
 <template>
   <main>
     <Nav />
-    <RouterVue />
+    <RouterView />
   </main>
 </template>
 
-<style scoped>
-
-</style>
