@@ -1,28 +1,48 @@
 <template>
   <div class="h-screen flex">
     <div
-      class="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center"
-    >
-      <div class="bg-black opacity-20 inset-0 z-0"></div>
-      <div class="w-full mx-auto px-20 flex-col items-center space-y-6">
-        <h1 class="text-white font-bold text-4xl font-sans">Breeze API</h1>
-        <p class="text-white mt-1">Breeze API app to use</p>
-        <div class="flex justify-center lg:justify-start mt-6">
-          <a
-            href="#"
-            class="hover:bg-indigo-700 hover:text-white hover:-translate-y-1 transition-all duration-500 bg-white text-indigo-800 mt-4 px-4 py-2 rounded-2xl font-bold mb-2"
-            >Get Started</a
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8"
+      class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8 mx-auto"
     >
       <div class="w-full px-8 md:px-32 lg:px-24">
         <form class="bg-white rounded-md shadow-2xl p-5">
-          <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
-          <p class="text-sm font-normal text-gray-600 mb-8">Welcome Back</p>
+          <h1 class="text-gray-800 font-bold text-2xl mb-1">
+            Create a new account
+          </h1>
+          <p class="text-sm font-normal text-gray-600 mb-8"></p>
+          <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              version="1.1"
+              class="text-gray-400"
+              fill="none"
+            >
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <polygon points="0 0 24 0 24 24 0 24" />
+                <path
+                  d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
+                  fill="#9ca3af"
+                  fill-rule="nonzero"
+                  opacity="0.3"
+                />
+                <path
+                  d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
+                  fill="#9ca3af"
+                  fill-rule="nonzero"
+                />
+              </g>
+            </svg>
+            <input
+              id="email"
+              class="pl-2 w-full outline-none border-none"
+              type="text"
+              name="name"
+              placeholder="Full name"
+            />
+          </div>
           <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -71,13 +91,14 @@
             type="submit"
             class="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2"
           >
-            Login
+            Register
           </button>
-          <div class="flex justify-between mt-4">
-            <router-link :to="{name: 'Login'}"
+          <div class="flex justify-center mt-4">
+            <router-link
+              :to="{ name: 'Login' }"
               href="#"
               class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all"
-              >Already registered?</router-link
+              >Already registered ?</router-link
             >
           </div>
         </form>
