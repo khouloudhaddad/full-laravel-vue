@@ -1,10 +1,30 @@
+<script setup>
+import {ref} from "vue"
+import axios from "axios"
+import { useRouter } from "vue-router"
+
+const router = useRouter()
+const form={
+  email: '',
+  password: ''
+}
+
+const handleLogin = async ()=>{
+  await axios.post('/api/login', {
+    email: form.email,
+    password: form.password
+  });
+  router.push('/');
+}
+</script>
+
 <template>
   <div class="h-screen flex">
     <div
       class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8 mx-auto"
     >
       <div class="w-full px-8 md:px-32 lg:px-24">
-        <form class="bg-white rounded-md shadow-2xl p-5">
+        <form class="bg-white rounded-md shadow-2xl p-5" @submit="handleLogin">
           <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
           <p class="text-sm font-normal text-gray-600 mb-8">Welcome Back</p>
           <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
@@ -27,6 +47,7 @@
               class="pl-2 w-full outline-none border-none"
               type="email"
               name="email"
+              v-model="form.email"
               placeholder="Email Address"
             />
           </div>
@@ -48,6 +69,7 @@
               type="password"
               name="password"
               id="password"
+              v-model="form.password"
               placeholder="Password"
             />
           </div>
@@ -74,8 +96,6 @@
     </div>
   </div>
 </template>
-
-<script setup></script>
 
 <style lang="scss" scoped>
 .login_img_section {
