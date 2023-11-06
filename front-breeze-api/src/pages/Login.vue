@@ -1,21 +1,29 @@
 <script setup>
-import {ref} from "vue"
-import axios from "axios"
-import { useRouter } from "vue-router"
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
-const form={
-  email: '',
-  password: ''
-}
+const router = useRouter();
+const form = ref({
+  email: "",
+  password: "",
+});
 
-const handleLogin = async ()=>{
-  await axios.post('/api/login', {
-    email: form.email,
-    password: form.password
-  });
-  router.push('/');
-}
+const handleLogin = async (e) => {
+  e.preventDefault()
+  axios
+    .post("/login", {
+      email: form.email,
+      password: form.password,
+    })
+    .then((res) => {
+      router.push("/");
+    })
+    .catch((err) => {
+      // Handle error
+      console.log(err);
+    });
+};
 </script>
 
 <template>
@@ -85,7 +93,8 @@ const handleLogin = async ()=>{
               >Forgot Password ?</span
             >
 
-            <router-link :to="{name: 'Register'}"
+            <router-link
+              :to="{ name: 'Register' }"
               href="#"
               class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all"
               >Don't have an account yet ?</router-link
