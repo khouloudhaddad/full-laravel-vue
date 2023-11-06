@@ -9,20 +9,15 @@ const form = ref({
   password: "",
 });
 
-const handleLogin = async (e) => {
-  e.preventDefault()
-  axios
+const handleLogin = async () => {
+  await axios
     .post("/login", {
-      email: form.email,
-      password: form.password,
-    })
-    .then((res) => {
-      router.push("/");
-    })
-    .catch((err) => {
-      // Handle error
-      console.log(err);
+      email: form.value.email,
+      password: form.value.password,
     });
+    
+    router.push("/");
+    
 };
 </script>
 
