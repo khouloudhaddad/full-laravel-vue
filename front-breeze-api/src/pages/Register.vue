@@ -1,10 +1,34 @@
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const form = ref({
+  name: "",
+  email: "",
+  password: "",
+  password_confirmation: "",
+});
+
+const handleRegister = async () => {
+  await axios.post("/register", {
+    name: form.value.name,
+    email: form.value.email,
+    password: form.value.password,
+    password_confirmation: form.value.password_confirmation
+  });
+  router.push("/");
+};
+</script>
+
 <template>
   <div class="h-screen flex">
     <div
       class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8 mx-auto"
     >
       <div class="w-full px-8 md:px-32 lg:px-24">
-        <form class="bg-white rounded-md shadow-2xl p-5">
+        <form class="bg-white rounded-md shadow-2xl p-5" @submit="handleRegister">
           <h1 class="text-gray-800 font-bold text-2xl mb-1">
             Create a new account
           </h1>
@@ -36,11 +60,12 @@
               </g>
             </svg>
             <input
-              id="email"
+              id="name"
               class="pl-2 w-full outline-none border-none"
               type="text"
               name="name"
               placeholder="Full name"
+              v-model="form.name"
             />
           </div>
           <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
@@ -64,6 +89,7 @@
               type="email"
               name="email"
               placeholder="Email Address"
+              v-model="form.email"
             />
           </div>
           <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl">
@@ -85,6 +111,29 @@
               name="password"
               id="password"
               placeholder="Password"
+              v-model="form.password"
+            />
+          </div>
+          <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <input
+              class="pl-2 w-full outline-none border-none"
+              type="password"
+              name="password_confirmation"
+              id="password_confirmation"
+              placeholder="Confirm password"
+              v-model="form.password_confirmation"
             />
           </div>
           <button
@@ -106,8 +155,6 @@
     </div>
   </div>
 </template>
-
-<script setup></script>
 
 <style lang="scss" scoped>
 .login_img_section {

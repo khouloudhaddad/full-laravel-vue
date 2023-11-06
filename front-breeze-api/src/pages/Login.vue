@@ -17,7 +17,6 @@ const handleLogin = async () => {
     });
     
     router.push("/");
-    
 };
 </script>
 
